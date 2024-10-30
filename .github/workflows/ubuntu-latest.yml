@@ -43,7 +43,7 @@ jobs:
           sleep 10
           ngrok_url=$(curl -s http://localhost:4040/api/tunnels | jq -r '.tunnels[0].public_url')
           echo "ngrok URL: $ngrok_url"
-          echo "::set-output name=ngrok_url::$ngrok_url"
+          echo "{ngrok_url}={$ngrok_url}" >> $GITHUB_OUTPUT
       
       - name: Keep Alive
         run: |
